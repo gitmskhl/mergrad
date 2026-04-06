@@ -5,8 +5,8 @@
 
 ### Usage
 
-The basic unit is an object of class Value.
-Any object of this class allows to build a calculation tree and then read the gradient from it. 
+The core building block is an instance of the `Value` class.
+Each `Value` object lets you build a computation graph and then obtain gradients from it.
 
 
 ```
@@ -14,24 +14,24 @@ x = Value(2.)
 y = x ** 2
 ```
 
-When using objects of this class in arithmetic calculations, the calculation tree will be automatically built.
+When you use `Value` objects in arithmetic expressions, the computation graph is built automatically.
 
 ![some text](https://github.com/gitmskhl/mergrad/blob/main/images/im1.png)
 
 
-To calculate the gradients, it is enough to call the .backward() method on the variable that saved the result of the calculation.
+To compute gradients, call the `.backward()` method on the variable that stores the result of the computation.
 
 ```
 x = Value(2.)
 y = x ** 2
 y.backward()
 ```
-The calculation tree looks like this
+The computation graph looks like this:
 
 ![some text](https://github.com/gitmskhl/mergrad/blob/main/images/im2.png)
 
 
-The gradient values after the .backward() method is called are stored in the .grad variable field.
+After calling `.backward()`, gradient values are stored in the `.grad` field.
 
 ```
 from mergrad.functional import sin
